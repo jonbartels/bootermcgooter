@@ -8,6 +8,7 @@ import com.mirth.connect.server.controllers.ConfigurationController;
 import com.mirth.connect.server.controllers.ControllerFactory;
 import com.mirth.connect.server.event.EventListener;
 import org.apache.commons.lang3.StringUtils;
+import com.mirth.connect.client.core.ControllerException;
 
 import java.util.Collections;
 import java.util.Set;
@@ -36,7 +37,11 @@ public class EventHandler extends EventListener {
 
                 ServerSettings serverSettings = new ServerSettings(mcEnvName, mcServerName, null);
                 ConfigurationController configurationController = ControllerFactory.getFactory().createConfigurationController();
-                configurationController.setServerSettings(serverSettings);
+                try {
+                    configurationController.setServerSettings(serverSettings);
+                } catch (ControllerException controllerException){
+                    //TODO log something
+                }
             }
         }
     }
