@@ -1,21 +1,16 @@
 package com.jonbartels.bootermcgooter;
 
 import com.kaurpalang.mirth.annotationsplugin.annotation.MirthServerClass;
-import com.mirth.connect.donkey.model.event.Event;
-import com.mirth.connect.donkey.server.event.EventType;
 import com.mirth.connect.plugins.ServerPlugin;
 import com.mirth.connect.server.controllers.ControllerFactory;
 import com.mirth.connect.server.controllers.EventController;
-import com.mirth.connect.server.event.EventListener;
-import com.mirth.connect.model.ServerEvent;
-import org.apache.commons.lang3.StringUtils;
 
-import java.util.Collections;
-import java.util.Set;
-
+import lombok.extern.slf4j.Slf4j;
 @MirthServerClass
+@Slf4j
 public class BooterMcGooter implements ServerPlugin {
     private EventController eventController = ControllerFactory.getFactory().createEventController();
+
     private final EventHandler eventHandler = new EventHandler();
     @Override
     public String getPluginPointName() {
@@ -24,11 +19,15 @@ public class BooterMcGooter implements ServerPlugin {
 
     @Override
     public void start() {
+        log.error("Starting. Adding listener..");
         eventController.addListener(eventHandler);
+        log.error("Added listener. Started.");
     }
 
     @Override
     public void stop() {
+        log.error("Stopping. Removing listener..");
         eventController.removeListener(eventHandler);
+        log.error("Removed listener. Stopped.");
     }
 }

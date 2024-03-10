@@ -1,150 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.jonbartels</groupId>
-  <artifactId>bootermcgooter</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+    <groupId>com.jonbartels</groupId>
+    <artifactId>bootermcgooter</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <name>bootermcgooter</name>
+    <name>bootermcgooter</name>
 
-  <modules>
-    <module>server</module>
-    <module>distribution</module>
-  </modules>
+    <modules>
+        <module>server</module>
+        <module>distribution</module>
+    </modules>
 
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <mirth.version>4.4.0</mirth.version>
+        <mirth.version>4.4.0</mirth.version>
 
-    <maven-processor-plugin.version>4.5</maven-processor-plugin.version>
-    <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-    <mirth-plugin-maven-plugin.version>2.0.1</mirth-plugin-maven-plugin.version>
-    <lombok.version>1.18.22</lombok.version>
-    <miglayout.version>3.7.4</miglayout.version>
+        <maven-processor-plugin.version>4.5</maven-processor-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <mirth-plugin-maven-plugin.version>2.0.1</mirth-plugin-maven-plugin.version>
+        <lombok.version>1.18.22</lombok.version>
+        <miglayout.version>3.7.4</miglayout.version>
 
-    <!-- Where should annotation processor generate aggregation file -->
-    <processor.aggregator.path>plugindata.json</processor.aggregator.path>
+        <!-- Where should annotation processor generate aggregation file -->
+        <processor.aggregator.path>plugindata.json</processor.aggregator.path>
 
-    <!-- Plugin details -->
-    <plugin.path>bootermcgooter</plugin.path>
-    <plugin.name>Booter McGooter</plugin.name>
-    <plugin.url>https://github.com/jonbartels/bootermcgooter</plugin.url>
-    <plugin.author>Jon Bartels</plugin.author>
-    <plugin.version>${project.version}</plugin.version>
-    <plugin.mirthVersion>${mirth.version},4.4.1,4.4.2,4.5.0,4.5.1,4.5.2,4.6.0</plugin.mirthVersion>
-    <plugin.archive.name>bootermcgooter</plugin.archive.name>
-    <plugin.aggregatorPath>plugindata.json</plugin.aggregatorPath>
-  </properties>
+        <!-- Plugin details -->
+        <plugin.path>bootermcgooter</plugin.path>
+        <plugin.name>Booter McGooter</plugin.name>
+        <plugin.url>https://github.com/jonbartels/bootermcgooter</plugin.url>
+        <plugin.author>Jon Bartels</plugin.author>
+        <plugin.version>${project.version}</plugin.version>
+        <plugin.mirthVersion>${mirth.version},4.4.1,4.4.2,4.5.0,4.5.1,4.5.2,4.6.0</plugin.mirthVersion>
+        <plugin.archive.name>bootermcgooter</plugin.archive.name>
+        <plugin.aggregatorPath>plugindata.json</plugin.aggregatorPath>
+    </properties>
 
-  <repositories>
-    <repository>
-      <id>repsy</id>
-      <url>https://repo.repsy.io/mvn/kpalang/default</url>
-    </repository>
-    <repository>
-      <id>repsy-mirthconnect</id>
-      <url>https://repo.repsy.io/mvn/kpalang/mirthconnect</url>
-    </repository>
-  </repositories>
+    <repositories>
+        <repository>
+            <id>repsy</id>
+            <url>https://repo.repsy.io/mvn/kpalang/default</url>
+        </repository>
+        <repository>
+            <id>repsy-mirthconnect</id>
+            <url>https://repo.repsy.io/mvn/kpalang/mirthconnect</url>
+        </repository>
+    </repositories>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>repsy-default</id>
-      <url>https://repo.repsy.io/mvn/kpalang/default</url>
-    </pluginRepository>
-  </pluginRepositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repsy-default</id>
+            <url>https://repo.repsy.io/mvn/kpalang/default</url>
+        </pluginRepository>
+    </pluginRepositories>
 
-  <dependencies>
-    <!-- Helper plugin to handle Mirth plugin specific tasks. -->
-    <dependency>
-      <groupId>com.kaurpalang</groupId>
-      <artifactId>mirth-plugin-maven-plugin</artifactId>
-      <version>${mirth-plugin-maven-plugin.version}</version>
-    </dependency>
+    <dependencies>
+        <!-- Helper plugin to handle Mirth plugin specific tasks. -->
+        <dependency>
+            <groupId>com.kaurpalang</groupId>
+            <artifactId>mirth-plugin-maven-plugin</artifactId>
+            <version>${mirth-plugin-maven-plugin.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>com.mirth.connect</groupId>
-      <artifactId>mirth-server</artifactId>
-      <version>${mirth.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.mirth.connect</groupId>
-      <artifactId>mirth-client-core</artifactId>
-      <version>${mirth.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.mirth.connect</groupId>
-      <artifactId>donkey-server</artifactId>
-      <version>${mirth.version}</version>
-      <scope>provided</scope>
-    </dependency>
+        <dependency>
+            <groupId>com.mirth.connect</groupId>
+            <artifactId>mirth-server</artifactId>
+            <version>${mirth.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mirth.connect</groupId>
+            <artifactId>mirth-client-core</artifactId>
+            <version>${mirth.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mirth.connect</groupId>
+            <artifactId>donkey-server</artifactId>
+            <version>${mirth.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-      <scope>provided</scope>
-    </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.12</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>2.22.1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.22.1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>3.14.0</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
 
-  <build>
-    <!-- Specify naming pattern for submodules. For example pluginname-client.jar -->
-    <finalName>${project.parent.artifactId}-${project.artifactId}</finalName>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.22.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.22.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-    <plugins>
-      <plugin>
-        <groupId>org.bsc.maven</groupId>
-        <artifactId>maven-processor-plugin</artifactId>
-        <version>${maven-processor-plugin.version}</version>
-        <executions>
-          <execution>
-            <id>process</id>
-            <goals>
-              <goal>process</goal>
-            </goals>
-            <phase>process-sources</phase>
+    <build>
+        <!-- Specify naming pattern for submodules. For example pluginname-client.jar -->
+        <finalName>${project.parent.artifactId}-${project.artifactId}</finalName>
 
-            <configuration>
-              <!-- Specify annotation processor class -->
-              <processors>
-                <processor>com.kaurpalang.mirth.annotationsplugin.processor.MirthPluginProcessor</processor>
-              </processors>
+        <plugins>
+            <plugin>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+                <version>${maven-processor-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>process</id>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <phase>process-sources</phase>
 
-              <options>
-                <aggregator.file>${processor.aggregator.path}</aggregator.file>
-              </options>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+                        <configuration>
+                            <!-- Specify annotation processor class -->
+                            <processors>
+                                <processor>com.kaurpalang.mirth.annotationsplugin.processor.MirthPluginProcessor
+                                </processor>
+                            </processors>
+
+                            <options>
+                                <aggregator.file>${processor.aggregator.path}</aggregator.file>
+                            </options>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
