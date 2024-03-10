@@ -12,6 +12,13 @@ public class BooterMcGooter implements ServerPlugin {
     private EventController eventController = ControllerFactory.getFactory().createEventController();
 
     private final EventHandler eventHandler = new EventHandler();
+
+    public BooterMcGooter() {
+        log.info("Instantiating. Adding listener..");
+        eventController.addListener(eventHandler);
+        log.info("Added listener. Instantiated.");
+    }
+
     @Override
     public String getPluginPointName() {
         return "Booter McGooter";
@@ -19,15 +26,9 @@ public class BooterMcGooter implements ServerPlugin {
 
     @Override
     public void start() {
-        log.error("Starting. Adding listener..");
-        eventController.addListener(eventHandler);
-        log.error("Added listener. Started.");
     }
 
     @Override
     public void stop() {
-        log.error("Stopping. Removing listener..");
-        eventController.removeListener(eventHandler);
-        log.error("Removed listener. Stopped.");
     }
 }
