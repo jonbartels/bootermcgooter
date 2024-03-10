@@ -41,7 +41,7 @@ jobs:
           cp distribution/target/*.zip
     
       - name: Step 3 - Use the Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with: 
           name: assets-for-download
           path: downloads
