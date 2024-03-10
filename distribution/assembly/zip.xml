@@ -39,14 +39,6 @@
             <source>${project.parent.basedir}/server/target/${project.parent.artifactId}-server.jar</source>
             <outputDirectory>/</outputDirectory>
         </file>
-        <file>
-            <source>${project.parent.basedir}/shared/target/${project.parent.artifactId}-shared.jar</source>
-            <outputDirectory>/</outputDirectory>
-        </file>
-        <file>
-            <source>${project.parent.basedir}/client/target/${project.parent.artifactId}-client.jar</source>
-            <outputDirectory>/</outputDirectory>
-        </file>
     </files>
 
     <!-- Include libraries needed at runtime -->

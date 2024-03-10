@@ -13,6 +13,7 @@
 
   <modules>
     <module>server</module>
+    <module>distribution</module>
   </modules>
 
   <properties>
@@ -20,11 +21,10 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <mirth.version>4.4.1</mirth.version>
+    <mirth.version>4.4.0</mirth.version>
 
     <maven-processor-plugin.version>4.5</maven-processor-plugin.version>
     <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-    <maven-jarsigner-plugin.version>3.0.0</maven-jarsigner-plugin.version>
     <mirth-plugin-maven-plugin.version>2.0.1</mirth-plugin-maven-plugin.version>
     <lombok.version>1.18.22</lombok.version>
     <miglayout.version>3.7.4</miglayout.version>
@@ -38,7 +38,7 @@
     <plugin.url>https://github.com/jonbartels/bootermcgooter</plugin.url>
     <plugin.author>Jon Bartels</plugin.author>
     <plugin.version>${project.version}</plugin.version>
-    <plugin.mirthVersion>${mirth.version}</plugin.mirthVersion>
+    <plugin.mirthVersion>${mirth.version},4.4.1,4.4.2,4.5.0,4.5.1,4.5.2,4.6.0</plugin.mirthVersion>
     <plugin.archive.name>bootermcgooter</plugin.archive.name>
     <plugin.aggregatorPath>plugindata.json</plugin.aggregatorPath>
   </properties>
@@ -144,26 +144,6 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jarsigner-plugin</artifactId>
-        <version>${maven-jarsigner-plugin.version}</version>
-        <executions>
-          <execution>
-            <id>sign</id>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <keystore>${project.parent.basedir}/certificate/keystore.jks</keystore>
-          <alias>selfsigned3</alias>
-          <storepass>storepass</storepass>
-          <keypass>keypass</keypass>
-        </configuration>
       </plugin>
     </plugins>
   </build>
