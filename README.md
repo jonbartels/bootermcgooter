@@ -18,3 +18,5 @@ As usual, I was hacking on something at work and asked the brain trust in Slack 
 The goal I had was to set environment name and server name at boot time from environment variables. These can be set in the MC UI. They are stored as `core` properties in the `configurations` table. It is possible to pre-load a DB or execute `psql` statements from the Docker startup script. That requires some fiddly SQL but @kpalang sketched out how to do it.
 
 @tonygermano hit on the idea of leveraging the [new server startup event](https://github.com/nextgenhealthcare/connect/pull/4861) feature from 4.4.0.
+
+Kirby Knight, Sean Rowe, and Jacob Schleith also contributed to the user story.
