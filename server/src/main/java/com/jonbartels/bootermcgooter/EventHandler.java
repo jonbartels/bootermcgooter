@@ -33,7 +33,7 @@ public class EventHandler extends EventListener {
         log.debug("Processing event...");
         if (event instanceof ServerEvent) {
             ServerEvent serverEvent = (ServerEvent) event;
-            log.error("Event is server event...");
+            log.debug("Event is server event...");
             if (StringUtils.equalsIgnoreCase(serverEvent.getName(), "Server startup complete")) {
                 log.debug("Event is startup event...");
                 String mcServerName = System.getenv("MC_SERVER_NAME");
